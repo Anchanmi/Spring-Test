@@ -6,6 +6,8 @@ import org.springframework.context.annotation.Configuration;
 import spring.ChangePasswordService;
 import spring.MemberDao;
 import spring.MemberRegisterService;
+import spring.MemberListPrinter;
+import spring.MemberPrinter;
 
 @Configuration
 public class AppCtx {
@@ -26,4 +28,16 @@ public class AppCtx {
 		pwdSvc.setMemberDao(memberDao());
 		return pwdSvc;
 	}
+	
+	@Bean
+	public MemberPrinter memberPrinter() {
+		return new MemberPrinter();
+	}
+	
+	@Bean
+	public MemberListPrinter listPrinter() {
+		return new MemberListPrinter(memberDao(), memberPrinter());
+	}
+	
+	
 }
