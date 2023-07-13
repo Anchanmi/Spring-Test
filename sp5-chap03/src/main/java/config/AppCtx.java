@@ -8,6 +8,7 @@ import spring.MemberDao;
 import spring.MemberRegisterService;
 import spring.MemberListPrinter;
 import spring.MemberPrinter;
+import spring.MemberInfoPrinter;
 
 @Configuration
 public class AppCtx {
@@ -37,6 +38,14 @@ public class AppCtx {
 	@Bean
 	public MemberListPrinter listPrinter() {
 		return new MemberListPrinter(memberDao(), memberPrinter());
+	}
+	
+	@Bean
+	public MemberInfoPrinter infoPrinter() {
+		MemberInfoPrinter infoPrinter = new MemberInfoPrinter();
+		infoPrinter.setMemberDao(memberDao());
+		infoPrinter.setPrinter(memberPrinter());
+		return infoPrinter;
 	}
 	
 	
