@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import config.AppCtx;
+import config.*;
 import spring.*;
 
 public class MainForSpring {
@@ -16,7 +16,7 @@ public class MainForSpring {
 	
 	public static void main(String[] args) throws IOException{
 		// TODO Auto-generated method stub
-		ctx = new AnnotationConfigApplicationContext(AppCtx.class);
+		ctx = new AnnotationConfigApplicationContext(AppConf1.class, AppConf2.class); //두 개 설정파일 사용하기
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 				
 		while(true) {
