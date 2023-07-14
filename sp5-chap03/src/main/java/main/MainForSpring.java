@@ -42,6 +42,10 @@ public class MainForSpring {
 				processInfoCommand(command.split(" "));
 				continue;
 			}
+			else if(command.equals("version")) {
+				processVersionCommand();
+				continue;
+			}
 			printHelp();
 		}
 	}
@@ -112,6 +116,10 @@ public class MainForSpring {
 		
 		MemberInfoPrinter infoPrinter= ctx.getBean("infoPrinter", MemberInfoPrinter.class);
 		infoPrinter.printMemberinfo(arg[1]);
+	}
+	private static void processVersionCommand() {
+		VersionPrinter versionPrinter = ctx.getBean("versionPrinter", VersionPrinter.class);
+		versionPrinter.print();
 	}
 	
 }
