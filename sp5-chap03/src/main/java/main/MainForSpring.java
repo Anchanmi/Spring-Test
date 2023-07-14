@@ -16,7 +16,7 @@ public class MainForSpring {
 	
 	public static void main(String[] args) throws IOException{
 		// TODO Auto-generated method stub
-		ctx = new AnnotationConfigApplicationContext(AppConf1.class, AppConf2.class); //두 개 설정파일 사용하기
+		ctx = new AnnotationConfigApplicationContext(AppConfImport.class); //Import 사용
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 				
 		while(true) {
