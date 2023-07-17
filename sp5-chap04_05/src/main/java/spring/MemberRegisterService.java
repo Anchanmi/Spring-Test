@@ -1,8 +1,11 @@
 package spring;
 
 import java.time.LocalDateTime;
+
+import org.springframework.stereotype.Component;
 import org.springframework.beans.factory.annotation.Autowired;
 
+@Component
 public class MemberRegisterService {
 	
 	@Autowired
