@@ -21,7 +21,7 @@ public class AppCtx {
 	
 	@Bean
 	public MemberRegisterService memberRegSvc() {
-		return new MemberRegisterService(memberDao());
+		return new MemberRegisterService();
 	}
 	
 	@Bean
@@ -37,13 +37,12 @@ public class AppCtx {
 	
 	@Bean
 	public MemberListPrinter listPrinter() {
-		return new MemberListPrinter(memberDao(), memberPrinter());
+		return new MemberListPrinter();
 	}
 	
 	@Bean
 	public MemberInfoPrinter infoPrinter() {
-		MemberInfoPrinter infoPrinter = new MemberInfoPrinter();
-		return infoPrinter;
+		return new MemberInfoPrinter();
 	}
 	
 	@Bean
