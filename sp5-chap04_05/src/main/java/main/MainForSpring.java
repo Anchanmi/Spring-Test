@@ -100,6 +100,9 @@ public class MainForSpring {
 		System.out.println("명령어 사용법");
 		System.out.println("new 이메일 이름 암호 암호 확인");
 		System.out.println("change 이메일 현재비번 변경비번");
+		System.out.println("list");
+		System.out.println("info 이메일");
+		System.out.println("version");
 		System.out.println();
 	}
 	
