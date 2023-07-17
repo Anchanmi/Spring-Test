@@ -1,7 +1,7 @@
 package spring;
 
 import java.time.format.DateTimeFormatter;
-//import org.springframework.lang.Nullable;
+import org.springframework.lang.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class MemberPrinter {
@@ -25,8 +25,8 @@ public class MemberPrinter {
 		}
 	}
 	
-	@Autowired(required = false)
-	public void setDateFormatter(DateTimeFormatter dateTimeFormatter) {
+	@Autowired
+	public void setDateFormatter(@Nullable DateTimeFormatter dateTimeFormatter) {
 		this.dateTimeFormatter = dateTimeFormatter;
 	}
 }
