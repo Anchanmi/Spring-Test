@@ -1,9 +1,9 @@
 package spring;
 
 import java.time.format.DateTimeFormatter;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.Nullable;
 
 public class MemberPrinter {
 	
@@ -21,12 +21,7 @@ public class MemberPrinter {
 	}
 	
 	@Autowired
-	public void setDateFormatter(Optional<DateTimeFormatter> formatterOpt) {
-		if(formatterOpt.isPresent()) {
-			this.dateTimeFormatter = formatterOpt.get();
-		}
-		else {
-			this.dateTimeFormatter = null;
-		}
+	public void setDateFormatter(@Nullable DateTimeFormatter dateTimeFormatter) {
+		this.dateTimeFormatter = dateTimeFormatter;
 	}
 }
