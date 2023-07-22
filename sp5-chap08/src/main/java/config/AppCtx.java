@@ -4,6 +4,10 @@ import org.apache.tomcat.jdbc.pool.DataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+
 import spring.ChangePasswordService;
 import spring.MemberDao;
 import spring.MemberRegisterService;
@@ -12,6 +16,7 @@ import spring.MemberPrinter;
 import spring.MemberInfoPrinter;
 
 @Configuration
+@EnableTransactionManagement
 public class AppCtx {
 	
 	@Bean(destroyMethod = "close")
@@ -27,6 +32,13 @@ public class AppCtx {
 		ds.setMinEvictableIdleTimeMillis(1000 * 60 * 3);
 		ds.setTimeBetweenEvictionRunsMillis(1000 * 10);
 		return ds;
+	}
+	
+	@Bean
+	public PlatformTransactionManager transacntionManager() {
+		DataSourceTransactionManager tm = new DataSourceTransactionManager();
+		tm.setDataSource(dataSource());
+		return tm;
 	}
 
 	@Bean
