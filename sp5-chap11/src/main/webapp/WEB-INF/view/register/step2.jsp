@@ -9,12 +9,12 @@
 	<form action="step3" method="post">
 		<p>
 			<label>이메일:<br>
-				<input type="text" name="email" id="email">
+				<input type="text" name="email" id="email" value="${registerRequest.email}">
 			</label>
 		</p>
 		<p>
 			<label>이름:<br>
-				<input type="text" name="name" id="name">
+				<input type="text" name="name" id="name" value="${registerRequest.name}">
 			</label>
 		</p>
 		<p>
