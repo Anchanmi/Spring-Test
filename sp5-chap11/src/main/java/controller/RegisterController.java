@@ -5,9 +5,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import spring.DuplicateMemberException;
+import spring.MemberRegisterService;
+import spring.RegisterRequest;
 
 @Controller
 public class RegisterController {
+	
+	@Autowired
+	private MemberRegisterService memberRegisterService;
+	
+	public void setMemberRegisterService(MemberRegisterService memberRegisterService) {
+		this.memberRegisterService = memberRegisterService;
+	}
 
 	@RequestMapping("/register/step1")
 	public String handleStep1() {
@@ -26,4 +38,16 @@ public class RegisterController {
 	public String handleStep2Get() {
 		return "redirect:/register/step1";
 	}
+	
+	@PostMapping("/register/step3")
+	public String handleStep3(RegisterRequest regReq) {
+		try {
+			memberRegisterService.regist(regReq);
+			return "register/step3";
+		}catch(DuplicateMemberException ex) {
+			return "register/step2";
+		}
+	}
+	
+	
 }
