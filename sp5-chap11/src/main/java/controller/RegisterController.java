@@ -18,6 +18,6 @@ public class RegisterController {
 		if(!agreeVal) {
 			return "register/step1";
 		}
-		return "register.step2";
+		return "register/step2";
 	}
 }
