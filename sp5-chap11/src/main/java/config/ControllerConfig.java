@@ -12,4 +12,5 @@ public class ControllerConfig {
 	public RegisterController registerController() {
 		return new RegisterController();
 	}
+	
 }
