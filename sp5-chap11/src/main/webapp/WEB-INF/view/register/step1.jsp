@@ -10,7 +10,7 @@
 	<form action="step2" method="post">
 		<label>
 			<input type="checkbox" name="agree" value="true"> 약관 동의
-		</label><br>
+		</label><br><br>
 		<input type="submit" value="다음 단계" />
 	</form>
 </body>
