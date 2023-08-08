@@ -12,7 +12,7 @@ public class SurveyController {
 	
 	@GetMapping
 	public String form() {
-		return "survey/surveyFrom";
+		return "survey/surveyForm";
 	}
 	
 	@PostMapping
