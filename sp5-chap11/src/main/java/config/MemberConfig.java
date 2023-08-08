@@ -25,6 +25,8 @@ public class MemberConfig {
 		ds.setInitialSize(2);
 		ds.setMaxActive(10);
 		ds.setTestWhileIdle(true);
+		ds.setValidationQuery("select 1");
+		ds.setValidationQueryTimeout(-1);
 		ds.setMinEvictableIdleTimeMillis(60000 * 3);
 		ds.setTimeBetweenEvictionRunsMillis(10 * 1000);
 		return ds;
