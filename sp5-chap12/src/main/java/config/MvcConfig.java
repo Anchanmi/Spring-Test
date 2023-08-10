@@ -9,10 +9,17 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.context.MessageSource;
 import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.validation.Validator;
+
+import controller.RegisterRequestValidator;
 
 @Configuration
 @EnableWebMvc
 public class MvcConfig implements WebMvcConfigurer{
+	@Override
+	public Validator getValidator() {
+		return new RegisterRequestValidator();
+	}
 
 	@Override
 	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
