@@ -60,11 +60,11 @@ public class RegisterController {
 			return "register/step2";
 		}
 	}
-	
+	/*
 	@InitBinder
 	protected void initBinder(WebDataBinder binder) {
 		binder.setValidator(new RegisterRequestValidator());
 	}
-	
+	*/
 	
 }
