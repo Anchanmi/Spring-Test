@@ -48,7 +48,7 @@ public class RegisterController {
 	
 	@PostMapping("/register/step3")
 	public String handleStep3(@Valid RegisterRequest regReq, Errors errors) {
-		new RegisterRequestValidator().validate(regReq, errors);
+		//new RegisterRequestValidator().validate(regReq, errors);
 		if(errors.hasErrors()) {
 			return "register/step2";
 		}
