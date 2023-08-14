@@ -2,9 +2,14 @@ package controller;
 
 import java.time.LocalDateTime;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class ListCommand {
 
+	@DateTimeFormat(pattern = "yyyyMMddHH")
 	private LocalDateTime from;
+	
+	@DateTimeFormat(pattern = "yyyyMMddHH")
 	private LocalDateTime to;
 	
 	public LocalDateTime getFrom() {
