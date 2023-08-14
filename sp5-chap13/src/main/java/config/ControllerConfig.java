@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 
 import controller.RegisterController;
 import controller.LoginController;
+import controller.LogoutController;
 import survey.SurveyController;
 
 @Configuration
@@ -22,6 +23,11 @@ public class ControllerConfig {
 	@Bean
 	public LoginController loginController() {
 		return new LoginController();
+	}
+	
+	@Bean
+	public LogoutController logoutController() {
+		return new LogoutController();
 	}
 	
 }
