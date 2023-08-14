@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import spring.*;
 
@@ -15,6 +16,7 @@ import spring.*;
 @RequestMapping("/edit/changePassword")
 public class ChangePwdController {
 	
+	@Autowired
 	private ChangePasswordService changePasswordService;
 	
 	public void setChangePasswordService(ChangePasswordService changePasswordService) {
