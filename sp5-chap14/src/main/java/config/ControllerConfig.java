@@ -7,6 +7,7 @@ import controller.RegisterController;
 import controller.LoginController;
 import controller.LogoutController;
 import controller.ChangePwdController;
+import controller.MemberListController;
 import survey.SurveyController;
 
 @Configuration
@@ -36,4 +37,8 @@ public class ControllerConfig {
 		return new ChangePwdController();
 	}
 	
+	@Bean
+	public MemberListController memberListController() {
+		return new MemberListController();
+	}
 }
