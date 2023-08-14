@@ -3,11 +3,7 @@ package config;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Bean;
 
-import controller.RegisterController;
-import controller.LoginController;
-import controller.LogoutController;
-import controller.ChangePwdController;
-import controller.MemberListController;
+import controller.*;
 import survey.SurveyController;
 
 @Configuration
@@ -40,5 +36,10 @@ public class ControllerConfig {
 	@Bean
 	public MemberListController memberListController() {
 		return new MemberListController();
+	}
+	
+	@Bean
+	public MemberDetailController memberDetailController() {
+		return new MemberDetailController();
 	}
 }
