@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -31,13 +33,12 @@ public class RestMemberController {
 	}
 	
 	@GetMapping("/api/members/{id}")
-	public Member member(@PathVariable Long id, HttpServletResponse response) throws IOException{
+	public ResponseEntity<Object> member(@PathVariable Long id, HttpServletResponse response) throws IOException{
 		Member member = memberDao.selectById(id);
 		if(member == null) {
-			response.sendError(HttpServletResponse.SC_NOT_FOUND);
-			return null;
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse("no member"));
 		}
-		return member;
+		return ResponseEntity.status(HttpStatus.OK).body(member);
 	}
 	
 	@PostMapping("/api/members")
