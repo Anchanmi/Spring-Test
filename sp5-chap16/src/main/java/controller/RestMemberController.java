@@ -4,10 +4,13 @@ import java.util.List;
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -35,6 +38,17 @@ public class RestMemberController {
 			return null;
 		}
 		return member;
+	}
+	
+	@PostMapping("/api/members")
+	public void newMember(@RequestBody @Valid RegisterRequest regReq, HttpServletResponse response) throws IOException{
+		try {
+			Long newMemberId = registerService.regist(regReq);
+			response.setHeader("Location", "/api/members/" + newMemberId);
+			response.setStatus(HttpServletResponse.SC_CREATED);
+		} catch(DuplicateMemberException dupEx) {
+			response.sendError(HttpServletResponse.SC_CONFLICT);
+		}
 	}
 	
 	public void setMemberDao(MemberDao memberDao) {
