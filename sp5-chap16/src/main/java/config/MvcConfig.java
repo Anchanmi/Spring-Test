@@ -23,6 +23,12 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 
 @Configuration
 @EnableWebMvc
@@ -56,8 +62,10 @@ public class MvcConfig implements WebMvcConfigurer{
 	
 	@Override
 	public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
-		ObjectMapper objectMapper = Jackson2ObjectMapperBuilder.json()
-				.featuresToDisable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+		ObjectMapper objectMapper = Jackson2ObjectMapperBuilder
+				.json()
+				.serializerByType(LocalDateTime.class, new LocalDateTimeSerializer(formatter))
 				.build();
 		converters.add(0, new MappingJackson2HttpMessageConverter(objectMapper));
 		
